@@ -2,10 +2,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
     background-color: maroon;
+    transition: background 0.8s ease;
 }
 
 .container {
@@ -15,3 +16,9 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
+body.rain {background: linear-gradient(to bottom, #4b6cb7, #182848); }
+body.sunny {background: linear-gradient(to bottom, #f7971e, #ffd200); }
+body.clouds {background: linear-gradient(to bottom, #bdc3c7, #2c3e50); }
+body.clear {background: linear-gradient(to bottom, #56ccf2, #2f80ed); }
+body.mist {background: linear-gradient(to bottom, #606c88, #3f4c6b); }
