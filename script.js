@@ -1,6 +1,6 @@
-const cityInput = document.getElementById('city-input');
+const cityInput = document.getElementById('cityInput');
 const searchBtn = document.getElementById('searchBtn');
-const weatherResult = document.getElementById('weatherResult');
+const WeatherResult = document.getElementById('WeatherResult');
 
 searchBtn.addEventListener('click', function() {
     const cityName = cityInput.value;
@@ -8,7 +8,7 @@ searchBtn.addEventListener('click', function() {
     if (cityName !== "") {
         getWeather(cityName);
     } else {
-        weatherResult.innerHTML = "<p>Please enter a city name.</p>";
+        WeatherResult.innerHTML = "<p>Please enter a city name.</p>";
     }
 });
 
@@ -19,12 +19,12 @@ function getWeather(city) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            weatherResult.innerHTML = `
+            WeatherResult.innerHTML = `
                 <h2>${data.name}</h2>
                 <p>Temperature: ${data.main.temp}°C</p>
                 <p>Condition: ${data.weather[0].description}</p>`;
         })
         .catch(error => {
-            weatherResult.innerHTML = "<p>City not found. Please pick a goddamn existing country!</p>";
+            WeatherResult.innerHTML = "<p>City not found. Please pick a goddamn existing country!</p>";
         });
 }
