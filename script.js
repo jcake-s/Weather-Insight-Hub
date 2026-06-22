@@ -1,6 +1,7 @@
 const cityInput = document.getElementById('cityInput');
 const searchBtn = document.getElementById('searchBtn');
 const WeatherResult = document.getElementById('WeatherResult');
+const clearBtn = document.getElementById('clearBtn');
 
 function getWeather(city) {
     const loader = document.getElementById('loader');
@@ -16,6 +17,7 @@ function getWeather(city) {
         .then(response => response.json())
         .then(data => {
             loader.style.display = 'none';
+            localStorage.setItem('lastCity', city);
             WeatherResult.innerHTML = `
                 <h2>${data.name}</h2>
                 <p>Temperature: ${data.main.temp}°C</p>
@@ -48,4 +50,19 @@ cityInput.addEventListener('keypress', function(event) {
             getWeather(cityName);
         }
     }
+});
+
+window.onload = () => {
+    const savedCity = localStorage.getItem('lastCity');
+    if (savedCity) {
+        document.getElementById('cityInput').value = savedCity;
+        getWeather(savedCity);
+    }
+};
+
+clearBtn.addEventListener('click', function() {
+    localStorage.removeItem('lastCity');
+    cityInput.value = '';
+    WeatherResult.innerHTML = '';
+    document.body.className = '';
 });
