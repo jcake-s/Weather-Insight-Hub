@@ -18,10 +18,14 @@ function getWeather(city) {
         .then(data => {
             loader.style.display = 'none';
             localStorage.setItem('lastCity', city);
+            const iconClass = getIcon(data.weather[0].main);
             WeatherResult.innerHTML = `
                 <h2>${data.name}</h2>
+                <i class="fas ${iconClass} fa-3x"></i>
                 <p>Temperature: ${data.main.temp}°C</p>
-                <p>Condition: ${data.weather[0].description}</p>`;
+                <p>Condition: ${data.weather[0].description}</p>
+                <p>Humidity: ${data.main.humidity}%</p>
+                <p>Wind Speed: ${data.wind.speed} m/s</p>`;
             
             const weatherCondition = data.weather[0].main;
             document.body.className = weatherCondition.toLowerCase();
@@ -30,6 +34,17 @@ function getWeather(city) {
             loader.style.display = 'none';
             WeatherResult.innerHTML = "<p>City not found. Please pick a goddamn existing place!</p>";
         });
+}
+
+function getIcon(condition) {
+    const icons = {
+        "Clouds": "fa-cloud",
+        "Rain": "fa-cloud-showers-heavy",
+        "Clear": "fa-sun",
+        "Snow": "fa-snowflake",
+        "Mist": "fa-smog"
+    };
+    return icons[condition] || "fa-question";
 }
 
 searchBtn.addEventListener('click', function() {
