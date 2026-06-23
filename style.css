@@ -102,7 +102,7 @@ button:hover {
     align-items: center;
 }
 
-#WeatherResult h2 { margin: 0; font-siz: 2.5rem;}
+#WeatherResult h2 { margin: 0; font-size: 2.5rem;}
 #WeatherResult i { margin: 1rem 0; font-size: 5rem; color: #fff;}
 #WeatherResult p { margin: 5px 0;}
 
