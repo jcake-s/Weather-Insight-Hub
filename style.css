@@ -4,7 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    font-family: 'bookman old style', Century, georgia;
+    font-family: 'Courier New', Courier, monospace;
     background-color: maroon;
     transition: background 0.8s ease;
 }

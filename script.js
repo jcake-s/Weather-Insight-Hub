@@ -5,7 +5,6 @@ const clearBtn = document.getElementById('clearBtn');
 
 function getWeather(city) {
     const loader = document.getElementById('loader');
-    const WeatherResult = document.getElementById('WeatherResult');
 
     loader.style.display = 'block';
     WeatherResult.innerHTML = '';
@@ -27,8 +26,7 @@ function getWeather(city) {
                 <p>Humidity: ${data.main.humidity}%</p>
                 <p>Wind Speed: ${data.wind.speed} m/s</p>`;
             
-            const weatherCondition = data.weather[0].main;
-            document.body.className = weatherCondition.toLowerCase();
+            document.body.className = data.weather[0].main.toLowerCase();
         })
         .catch(error => {
             loader.style.display = 'none';
