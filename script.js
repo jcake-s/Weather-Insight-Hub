@@ -19,8 +19,16 @@ function getWeather(city) {
             loader.style.display = 'none';
             localStorage.setItem('lastCity', city);
             const iconClass = getIcon(data.weather[0].main);
+            let alertMessage = '';
+            if (data.main.humidity > 80) {
+                alertMessage = '<span class="alert"> ⚠️ High Humidity Warning</span>';
+            } else if (data.wind.speed > 10) {
+                alertMessage = '<span class="alert"> 💨 High Wind Advisory</span>';
+            }
+
             WeatherResult.innerHTML = `
                 <h2>${data.name}</h2>
+                ${alertMessage}
                 <i class="fas ${iconClass} weather-icon"></i>
                 <p>Temperature: ${data.main.temp}°C</p>
                 <p>Condition: ${data.weather[0].description}</p>
