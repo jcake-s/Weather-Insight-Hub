@@ -6,6 +6,7 @@ const clearBtn = document.getElementById('clearBtn');
 function getWeather(city) {
     const loader = document.getElementById('loader');
 
+    WeatherResult.classList.remove('show');
     loader.style.display = 'block';
     WeatherResult.innerHTML = '';
     
@@ -20,17 +21,24 @@ function getWeather(city) {
             const iconClass = getIcon(data.weather[0].main);
             WeatherResult.innerHTML = `
                 <h2>${data.name}</h2>
-                <i class="fas ${iconClass} fa-3x"></i>
+                <i class="fas ${iconClass} weather-icon"></i>
                 <p>Temperature: ${data.main.temp}°C</p>
                 <p>Condition: ${data.weather[0].description}</p>
                 <p>Humidity: ${data.main.humidity}%</p>
                 <p>Wind Speed: ${data.wind.speed} m/s</p>`;
+            WeatherResult.classList.add('show');
             
             document.body.className = data.weather[0].main.toLowerCase();
+
+            setTimeout(() => {WeatherResult.classList.add('show');}, 50);
         })
         .catch(error => {
             loader.style.display = 'none';
             WeatherResult.innerHTML = "<p>City not found. Please pick a goddamn existing place!</p>";
+            WeatherResult.classList.add('show');
+        });
+        clearBtn.addEventListener('click', function() {
+            WeatherResult.classList.remove('show');
         });
 }
 
