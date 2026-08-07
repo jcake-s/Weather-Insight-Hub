@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title> Weather Insight Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Insight Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
     <div class="glass-background">
         <div class="glass-drop main-drop"></div>
         <div class="glass-drop small-drop"></div>
+        <div class="glass-drop tiny-drop"></div>
     </div>
 
-    <div class="weather-container">
+    <div class="weather-container" role="main" aria-label="Weather dashboard">
         <h1>Weather Insight Hub</h1>
-        <input type="text" id="cityInput" placeholder="Enter City name...">
-        <div class="button-row">
-            <button id="searchBtn">Get Weather</button>
-            <button id="clearBtn">Clear History</button>
+
+        <div class="search-section">
+            <input
+            type="text"
+            id="cityInput"
+            placeholder="Enter city name…"
+            aria-label="City name"
+            autocomplete="off"
+            />
+            <div class="button-row">
+                <button id="searchBtn" aria-label="Get weather">
+                    <i class="fas fa-search"></i> Get Weather
+                </button>
+                <button id="clearBtn" aria-label="Clear history">
+                    <i class="fas fa-undo-alt"></i> Clear
+                </button>
+            </div>
         </div>
 
-        <div id="loader" class="spinner" style="display: none;"></div>
-        <div id="WeatherResult"></div>
+        <div id="loader" class="spinner" style="display: none" role="status" aria-live="polite">
+            <span class="sr-only">Loading weather data…</span>
+        </div>
+
+        <div id="WeatherResult" aria-live="polite"></div>
+
+        <div id="lastUpdated" class="last-updated"></div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

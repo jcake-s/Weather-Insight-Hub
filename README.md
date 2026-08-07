@@ -1,5 +1,6 @@
 # Weather-Insight-Hub
-![WIH](image.png)
+![WIH](img1.png)
+![WIH](img2.png)
 --it just does what a normal weather dashboard does.--
 
 -LIVE SITE LINK-
